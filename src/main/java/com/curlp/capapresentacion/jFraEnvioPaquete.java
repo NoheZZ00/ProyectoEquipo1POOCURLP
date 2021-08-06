@@ -99,66 +99,38 @@ public class jFraEnvioPaquete extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "DATOS DE PAQUETE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 10), new java.awt.Color(102, 102, 102))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Id Envio de Paquete");
 
-        jTFIdEnvioPaquete.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Fecha de Envio");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("DNI - Ciente Origen");
 
-        jTFDNIClienteOrigen.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("DNI - Cliente Destino");
 
-        jTFDNIClienteDestino.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cantidad");
-
-        jTFCantidad.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel4.setBackground(new java.awt.Color(204, 232, 232));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "DATOS DE PAGO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 10), new java.awt.Color(102, 102, 102))); // NOI18N
         jPanel4.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Descuento Paquete");
 
-        jTFPrecioUnitario.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Precio Unitario");
 
-        jTFDescuentoPaquete.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Impuesto");
 
-        jTFImpuesto.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Forma de pago");
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Descuento Rebaja");
-
-        jTFDescuentoRebaja.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTFFormaPago.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -183,7 +155,7 @@ public class jFraEnvioPaquete extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jTFPrecioUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
@@ -205,18 +177,12 @@ public class jFraEnvioPaquete extends javax.swing.JFrame {
         );
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("DNI Empleado");
-
-        jTFDNIEmpleado.setBackground(new java.awt.Color(255, 255, 255));
 
         jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("DNI Cliente");
-
-        jTFDNICliente.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -277,11 +243,10 @@ public class jFraEnvioPaquete extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTFDNIEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -295,19 +260,15 @@ public class jFraEnvioPaquete extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jBtnNuevo.setBackground(new java.awt.Color(193, 239, 241));
-        jBtnNuevo.setForeground(new java.awt.Color(255, 255, 255));
         jBtnNuevo.setText("Nuevo");
 
         jBtnGuardar.setBackground(new java.awt.Color(193, 239, 241));
-        jBtnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         jBtnGuardar.setText("Guardar");
 
         jBtnEliminar.setBackground(new java.awt.Color(193, 239, 241));
-        jBtnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         jBtnEliminar.setText("Eliminar");
 
         jBtnActualizar.setBackground(new java.awt.Color(193, 239, 241));
-        jBtnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         jBtnActualizar.setText("Actualizar");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
