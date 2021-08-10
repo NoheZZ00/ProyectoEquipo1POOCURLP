@@ -66,7 +66,7 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Console", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("REGISTRO DE CLIENTES");
+        jLabel1.setText("REGISTRO DE CLIENTeeees");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
