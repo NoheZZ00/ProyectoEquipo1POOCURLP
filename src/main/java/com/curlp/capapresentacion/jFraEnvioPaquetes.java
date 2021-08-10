@@ -103,21 +103,17 @@ public class jFraEnvioPaquetes extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         jTabbedPane1.setBackground(new java.awt.Color(204, 232, 232));
-        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
 
         jPanel4.setBackground(new java.awt.Color(225, 242, 242));
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Id Envío de Paquete");
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Fecha de Envío");
 
         jDCFecha.setDateFormatString("dd/MM/yyyy");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("DNI - Cliente Origen");
 
         try {
@@ -126,7 +122,6 @@ public class jFraEnvioPaquetes extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("DNI - Cliente Destino");
 
         try {
@@ -135,13 +130,10 @@ public class jFraEnvioPaquetes extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cantidad");
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Descripción del Paquete");
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("DNI Cliente");
 
         try {
@@ -150,7 +142,6 @@ public class jFraEnvioPaquetes extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("DNI Empleado");
 
         try {
@@ -162,16 +153,12 @@ public class jFraEnvioPaquetes extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "DATOS DE PAGO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12), new java.awt.Color(102, 102, 102))); // NOI18N
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Precio Unitario");
 
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Descuento Rebaja");
 
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Impuesto");
 
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Forma de Pago");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -299,7 +286,7 @@ public class jFraEnvioPaquetes extends javax.swing.JFrame {
                             .addComponent(jFTFDNIEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTFDescripcionPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFTFDNIClienteDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -372,8 +359,6 @@ public class jFraEnvioPaquetes extends javax.swing.JFrame {
             .addGap(0, 23, Short.MAX_VALUE)
         );
 
-        jTblRegistroEnvios.setBackground(new java.awt.Color(255, 255, 255));
-        jTblRegistroEnvios.setForeground(new java.awt.Color(0, 0, 0));
         jTblRegistroEnvios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -383,8 +368,6 @@ public class jFraEnvioPaquetes extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTblRegistroEnvios);
-
-        jTFBuscar.setBackground(new java.awt.Color(255, 255, 255));
 
         jBtnMostrar.setForeground(new java.awt.Color(255, 255, 255));
         jBtnMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/curlp/imagenes/Mostrar.png"))); // NOI18N
@@ -445,8 +428,8 @@ public class jFraEnvioPaquetes extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -454,7 +437,7 @@ public class jFraEnvioPaquetes extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1090, 500));
