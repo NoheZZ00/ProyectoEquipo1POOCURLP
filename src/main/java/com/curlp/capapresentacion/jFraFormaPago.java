@@ -79,7 +79,6 @@ public class jFraFormaPago extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(204, 232, 232));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Forma de Pago", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(51, 51, 51))); // NOI18N
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Id Forma de Pago");
