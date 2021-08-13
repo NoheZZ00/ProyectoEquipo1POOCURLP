@@ -266,6 +266,12 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTblCliente = new javax.swing.JTable();
+        jBtnMostraTodosClientes = new javax.swing.JButton();
+        jTFBuscarCliente = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -286,12 +292,6 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         jBtnGuardar = new javax.swing.JButton();
         jBtnEliminar = new javax.swing.JButton();
         jBtnEditar = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTblCliente = new javax.swing.JTable();
-        jBtnMostraTodosClientes = new javax.swing.JButton();
-        jTFBuscarCliente = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -321,6 +321,49 @@ public class jFraDatosClientes extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
+
+        jPanel3.setBackground(new java.awt.Color(204, 232, 232));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTblCliente.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+        jTblCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "DNI", "Nombre", "Apellidos", "Dirreccion", "Celular", "Sexo", "Ciudad"
+            }
+        ));
+        jTblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTblClienteMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTblCliente);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 870, 330));
+
+        jBtnMostraTodosClientes.setBackground(new java.awt.Color(118, 213, 213));
+        jBtnMostraTodosClientes.setText("Mostrar Todos");
+        jBtnMostraTodosClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnMostraTodosClientesActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jBtnMostraTodosClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 120, 40));
+
+        jTFBuscarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFBuscarClienteKeyReleased(evt);
+            }
+        });
+        jPanel3.add(jTFBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 280, 30));
+
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Buscar");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 50, -1));
+
+        jTabbedPane1.addTab("Listar Clientes", jPanel3);
 
         jPanel2.setBackground(new java.awt.Color(204, 232, 232));
         jPanel2.setMinimumSize(new java.awt.Dimension(660, 334));
@@ -440,63 +483,21 @@ public class jFraDatosClientes extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Registro de Clientes", jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(204, 232, 232));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTblCliente.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
-        jTblCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "DNI", "Nombre", "Apellidos", "Dirreccion", "Celular", "Sexo", "Ciudad"
-            }
-        ));
-        jTblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTblClienteMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTblCliente);
-
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 870, 330));
-
-        jBtnMostraTodosClientes.setBackground(new java.awt.Color(118, 213, 213));
-        jBtnMostraTodosClientes.setText("Mostrar Todos");
-        jBtnMostraTodosClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnMostraTodosClientesActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jBtnMostraTodosClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 120, 40));
-
-        jTFBuscarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTFBuscarClienteKeyReleased(evt);
-            }
-        });
-        jPanel3.add(jTFBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 280, 30));
-
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Buscar");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 50, -1));
-
-        jTabbedPane1.addTab("Listar Clientes", jPanel3);
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 938, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1020, 470));
