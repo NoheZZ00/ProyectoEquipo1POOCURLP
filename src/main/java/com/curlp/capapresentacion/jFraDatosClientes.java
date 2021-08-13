@@ -475,11 +475,11 @@ public class jFraDatosClientes extends javax.swing.JFrame {
                 jTFBuscarClienteKeyReleased(evt);
             }
         });
-        jPanel3.add(jTFBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 280, 30));
+        jPanel3.add(jTFBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 280, 30));
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Buscar");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, 50, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 50, -1));
 
         jTabbedPane1.addTab("Listar Clientes", jPanel3);
 
