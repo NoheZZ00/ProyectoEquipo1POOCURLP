@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 public class Conexion {
     //Declaracion de variables para la url el usuario y la clave de la base de datos
-    private static String url = "jdbc:mysql://localhost:3306/limitecreditodb?zeroDateTimeBehavior=CONVERT_TO_NULL";
+    private static String url = "jdbc:mysql://localhost:3306/sistemapaqueteria?zeroDateTimeBehavior=CONVERT_TO_NULL";
     private static String user = "root";
-    private static String clave = "Walter.-1995";
+    private static String clave = "Agaperojo.2";
     
     //Método para conectar a la base de datos
     public static Connection conectar() throws SQLException {
