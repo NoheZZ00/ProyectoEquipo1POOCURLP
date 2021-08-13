@@ -44,8 +44,6 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
         jTFCantidad = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTFDescripcionPaquete = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jFTDNICliente = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         jFTDNIEmpleado = new javax.swing.JFormattedTextField();
         jPanel4 = new javax.swing.JPanel();
@@ -77,7 +75,7 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(118, 213, 213));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("GESTIÓN DE ENVÍOS DE PAQUETES");
 
@@ -86,16 +84,16 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(277, Short.MAX_VALUE)
+                .addContainerGap(335, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(248, 248, 248))
+                .addGap(292, 292, 292))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 80));
@@ -104,7 +102,7 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
 
         jTabbedPane1.setBackground(new java.awt.Color(219, 235, 235));
 
-        jPanel3.setBackground(new java.awt.Color(219, 235, 235));
+        jPanel3.setBackground(new java.awt.Color(204, 232, 232));
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Id Envío de Paquete");
@@ -135,15 +133,6 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
 
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Descrpción del Paquete");
-
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("DNI Cliente");
-
-        try {
-            jFTDNICliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####-#####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("DNI Empleado");
@@ -201,31 +190,31 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
                     .addComponent(jTFPrecioUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(jTFDescuentoRebaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
                     .addComponent(jTFImpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
                     .addComponent(jLabel13)
                     .addComponent(jCmbFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jBtnCancelar.setBackground(new java.awt.Color(51, 51, 51));
-        jBtnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnCancelar.setBackground(new java.awt.Color(118, 213, 213));
+        jBtnCancelar.setForeground(new java.awt.Color(153, 153, 153));
         jBtnCancelar.setText("Cancelar");
 
-        jBtnGuardar.setBackground(new java.awt.Color(51, 51, 51));
-        jBtnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnGuardar.setBackground(new java.awt.Color(118, 213, 213));
+        jBtnGuardar.setForeground(new java.awt.Color(153, 153, 153));
         jBtnGuardar.setText("Guardar");
 
-        jBtnEditar.setBackground(new java.awt.Color(51, 51, 51));
-        jBtnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnEditar.setBackground(new java.awt.Color(118, 213, 213));
+        jBtnEditar.setForeground(new java.awt.Color(153, 153, 153));
         jBtnEditar.setText("Editar");
 
-        jBtnNuevo.setBackground(new java.awt.Color(51, 51, 51));
-        jBtnNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnNuevo.setBackground(new java.awt.Color(118, 213, 213));
+        jBtnNuevo.setForeground(new java.awt.Color(153, 153, 153));
         jBtnNuevo.setText("Nuevo");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -280,24 +269,23 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jFTDNIClienteOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jFTDNICliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                                        .addComponent(jTFCantidad, javax.swing.GroupLayout.Alignment.LEADING))))
-                            .addComponent(jLabel8))
+                                        .addComponent(jFTDNIEmpleado, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTFCantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))))
+                            .addComponent(jLabel9))
                         .addGap(72, 72, 72)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel4)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel9)
                             .addComponent(jLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDCFechaEnvioPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                            .addComponent(jFTDNIClienteDestino)
-                            .addComponent(jTFDescripcionPaquete)
-                            .addComponent(jFTDNIEmpleado)
-                            .addComponent(jCmbCiudadDestino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCmbCiudadDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jDCFechaEnvioPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                                .addComponent(jFTDNIClienteDestino)
+                                .addComponent(jTFDescripcionPaquete)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
@@ -325,17 +313,12 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jTFDescripcionPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(jFTDNICliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9)
-                        .addComponent(jFTDNIEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jFTDNIEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(jCmbCiudadDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -346,7 +329,7 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Datos de Envío de Paquete", jPanel3);
 
-        jPanel6.setBackground(new java.awt.Color(219, 235, 235));
+        jPanel6.setBackground(new java.awt.Color(204, 232, 232));
 
         jTblRegistroEnvios.setBackground(new java.awt.Color(255, 255, 255));
         jTblRegistroEnvios.setForeground(new java.awt.Color(0, 0, 0));
@@ -355,17 +338,17 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id Envío Paquete", "Fecha de Envío", "DNI -  Cliente Origen ", "DNI - Cliente Destino", "Cantidad", "Descripción del Paquete", "Precio Unitario", "Descuento Rebaja", "Impuesto", "Forma de Pago", "DNI - Cliente", "CNI - Empleado", "Ciudad Destino"
+                "Id Envío Paquete", "Fecha de Envío", "DNI -  Cliente Origen ", "DNI - Cliente Destino", "Cantidad", "Descripción del Paquete", "Precio Unitario", "Descuento Rebaja", "Impuesto", "Forma de Pago", "DNI - Empleado", "Ciudad Destino"
             }
         ));
         jScrollPane1.setViewportView(jTblRegistroEnvios);
 
-        jBtnEliminar.setBackground(new java.awt.Color(51, 51, 51));
-        jBtnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnEliminar.setBackground(new java.awt.Color(118, 213, 213));
+        jBtnEliminar.setForeground(new java.awt.Color(153, 153, 153));
         jBtnEliminar.setText("Eliminar");
 
-        jBtnMostrar.setBackground(new java.awt.Color(51, 51, 51));
-        jBtnMostrar.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnMostrar.setBackground(new java.awt.Color(118, 213, 213));
+        jBtnMostrar.setForeground(new java.awt.Color(153, 153, 153));
         jBtnMostrar.setText("Mostrar");
 
         jTFBuscar.setBackground(new java.awt.Color(255, 255, 255));
@@ -379,19 +362,20 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jBtnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
-                .addComponent(jTFBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jBtnBuscar)
-                .addGap(78, 78, 78))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1061, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jBtnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(jBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTFBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBtnBuscar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1061, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,9 +383,9 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jBtnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTFBuscar))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTFBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBtnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(12, 12, 12))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBtnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -481,7 +465,6 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCmbCiudadDestino;
     private javax.swing.JComboBox<String> jCmbFormaPago;
     private com.toedter.calendar.JDateChooser jDCFechaEnvioPaquete;
-    private javax.swing.JFormattedTextField jFTDNICliente;
     private javax.swing.JFormattedTextField jFTDNIClienteDestino;
     private javax.swing.JFormattedTextField jFTDNIClienteOrigen;
     private javax.swing.JFormattedTextField jFTDNIEmpleado;
@@ -497,7 +480,6 @@ public class jFraEnviosPaquetes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
