@@ -7,8 +7,8 @@ public class CLEmpleado {
     String apellidosEmp;
     String direccion;
     String celular;
-    int idCargo;
-    int idCiudad;
+    String cargo;
+    String ciudad;
 
     public String getDNIEmp() {
         return DNIEmp;
@@ -49,27 +49,21 @@ public class CLEmpleado {
     public void setCelular(String celular) {
         this.celular = celular;
     }
-
-    public int getIdCargo() {
-        return idCargo;
-    }
-
-    public void setIdCargo(int idCargo) {
-        this.idCargo = idCargo;
-    }
-
-    public int getIdCiudad() {
-        return idCiudad;
-    }
-
-    public void setIdCiudad(int idCiudad) {
-        this.idCiudad = idCiudad;
-    }
-
-    public CLEmpleado() {
-        
+    
+    public String getCargo() {
+        return cargo;
     }
     
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
     
+    public String getCiudad() {
+        return ciudad;
+    }
+    
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
     
 }

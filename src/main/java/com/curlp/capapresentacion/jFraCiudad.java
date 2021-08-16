@@ -465,6 +465,11 @@ public class jFraCiudad extends javax.swing.JFrame {
 
     private void jBtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLimpiarActionPerformed
         limpiarTextField();
+        try {
+            encontrarCorrelativo();
+        } catch (SQLException ex) {
+            Logger.getLogger(jFraCiudad.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBtnLimpiarActionPerformed
     
     
