@@ -1,14 +1,13 @@
-
 package com.curlp.capadatos;
 
 import com.curlp.capalogica.CLEmpleado;
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class CDEmpleado {
@@ -34,13 +33,13 @@ public class CDEmpleado {
             ps.setString(3, cl.getApellidosEmp());
             ps.setString(4, cl.getDireccion());
             ps.setString(5, cl.getCelular());
-            ps.setInt(6, cl.getIdCargo());
-            ps.setInt(7,cl.getIdCiudad());
+            ps.setString(6, cl.getCargo());
+            ps.setString(7,cl.getCiudad());
             
             ps.execute();
             
         } catch(SQLException e) {
-            JOptionPane.showMessageDialog(null,"Error " + e.getMessage());
+            JOptionPane.showMessageDialog(null,"Error en funcion CDEMPLEADO" + e.getMessage());
         }
     }
     
@@ -57,8 +56,8 @@ public class CDEmpleado {
             ps.setString(3, cl.getApellidosEmp());
             ps.setString(4, cl.getDireccion());
             ps.setString(5, cl.getCelular());
-            ps.setInt(6, cl.getIdCargo());
-            ps.setInt(7, cl.getIdCiudad());
+            ps.setString(6, cl.getCargo());
+            ps.setString(7, cl.getCiudad());
             
             ps.execute();
             
@@ -85,22 +84,29 @@ public class CDEmpleado {
         }
     }
     
-    //Método para mostrar la lista de empleados 
-    public ArrayList<CLEmpleado> obtenerListaEmpleados() throws SQLException {
+    //Método para OBTENER la lista de empleados 
+    public List<CLEmpleado> obtenerListaEmpleados() throws SQLException {
         
         String sql = "{CALL mostrarEmpleados()}";
         
-        ArrayList<CLEmpleado> miLista = new ArrayList<>();
+        List<CLEmpleado> miLista = null;
         
         try {
             st = cn.createStatement();
             rs = st.executeQuery(sql);
+            
             miLista = new ArrayList<>();
             
             while(rs.next()) {
                 CLEmpleado cl = new CLEmpleado();
+                
                 cl.setDNIEmp(rs.getString("DNIEmp"));
                 cl.setNombreEmp(rs.getString("nombreEmp"));
+                cl.setApellidosEmp(rs.getString("apellidosEmp"));
+                cl.setDireccion(rs.getString("direccion"));
+                cl.setCelular(rs.getString("celular"));
+                cl.setCargo(rs.getString("cargo"));
+                cl.setCiudad(rs.getString("ciudad"));
                 
                 miLista.add(cl);
             }
@@ -112,4 +118,36 @@ public class CDEmpleado {
         return miLista;
     }
     
+    
+    public List<CLEmpleado> obtenerListaEmpleadoPorNombre(String nombreEmpleado) throws SQLException {
+        String sql = "{CALL mostrarEmpleadoPorNombre(?)}";
+        
+        List<CLEmpleado> miLista = null;
+        miLista = new ArrayList<>();
+        
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1,nombreEmpleado);
+            ps.executeQuery();
+            
+            while(rs.next()) {
+                CLEmpleado cl = new CLEmpleado();
+                
+                cl.setDNIEmp(rs.getString("DNIEmp"));
+                cl.setNombreEmp(rs.getString("nombreEmp"));
+                cl.setApellidosEmp(rs.getString("apellidosEmp"));
+                cl.setDireccion(rs.getString("direccion"));
+                cl.setCelular(rs.getString("celular"));
+                cl.setCargo(rs.getString("cargo"));
+                cl.setCiudad(rs.getString("ciudad"));
+                
+                miLista.add(cl);
+            }
+            
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null,"Error " + e.getMessage());
+
+        }
+        return miLista;
+    }
 }
