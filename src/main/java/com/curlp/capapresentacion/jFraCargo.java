@@ -32,7 +32,7 @@ public class jFraCargo extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    //Metodo para limpiar los datos de la tabla
+    // Método para limpiar los datos de la tabla.
     private void limpiarTabla() {
         DefaultTableModel dtm = (DefaultTableModel) this.jTblCargos.getModel();
 
@@ -41,7 +41,7 @@ public class jFraCargo extends javax.swing.JFrame {
         }
     }
 
-    //Metodos para poblar los datos de la tabla
+    // Método para poblar los datos de la tabla.
     private void poblarTablaCargos() throws SQLException {
 
         limpiarTabla();
@@ -59,7 +59,7 @@ public class jFraCargo extends javax.swing.JFrame {
         }).forEachOrdered(temp::addRow);
     }
 
-    //Metodo para encontrar el correlativo de id cargo.
+    // Método para encontrar el correlativo de idCargo.
     private void encontrarCorrelativo() throws SQLException {
         CDCargo cdc = new CDCargo();
         CLCargo cl = new CLCargo();
@@ -68,7 +68,7 @@ public class jFraCargo extends javax.swing.JFrame {
         this.jTFIdCargo.setText(String.valueOf(cl.getIdCargo()));
     }
 
-    //Metodo para habilitar y dehabilitar botones
+    // Método para habilitar y deshabilitar botones.
     private void habilitarBotones(boolean guardar, boolean editar, boolean eliminar,
             boolean limpiar) {
         this.jBtnGuardar.setEnabled(guardar);
@@ -77,7 +77,7 @@ public class jFraCargo extends javax.swing.JFrame {
         this.jBtnLimpiar.setEnabled(limpiar);
     }
 
-    //Metodo para limpiar las TextField
+    // Método para limpiar las TextField.
     private void limpiarTextField() {
         this.jTFIdCargo.setText("");
         this.jTFCargo.setText("");
@@ -85,7 +85,7 @@ public class jFraCargo extends javax.swing.JFrame {
 
     }
 
-    //Metodo para validar la TextField
+    // Método para validar la TextField.
     private boolean validarTextField() {
         boolean estado;
 
@@ -93,7 +93,7 @@ public class jFraCargo extends javax.swing.JFrame {
         return estado;
     }
 
-    //Metodo de insertar un Cargo en la tabla
+    // Método de insertar un Cargo en la tabla.
     private void insertarCargo() {
         if (!validarTextField()) {
             JOptionPane.showMessageDialog(null, "Tiene que ingresar el cargo", "Sistema Paquetería",
@@ -111,12 +111,12 @@ public class jFraCargo extends javax.swing.JFrame {
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al almacenar el registro" + ex);
-            this.jTFCargo.requestFocus();
+                this.jTFCargo.requestFocus();
             }
         }
     }
     
-    //Metodo para llamar el metodo de insertar cargo.
+    // Método para llamar el metodo de insertar cargo.
     private void guardar() throws SQLException {
         insertarCargo();
         poblarTablaCargos();
@@ -125,7 +125,7 @@ public class jFraCargo extends javax.swing.JFrame {
         encontrarCorrelativo();
     }
 
-    //Metodo para actualizar un registro de la tabla Cargo
+    // Método para actualizar un registro de la tabla Cargo.
     private void actualizarCargo() {
         if (!validarTextField()) {
             JOptionPane.showMessageDialog(null, "Tiene que ingresar el cargo", "Sistema Paquetería",
@@ -149,7 +149,7 @@ public class jFraCargo extends javax.swing.JFrame {
         }
     }
 
-    //Metodo para tomar datos de la fila seleccionada y asi poder modificarlos
+    // Método para tomar datos de la fila seleccionada y así poder modificarlos.
     private void filaSeleccionada() {
         if (this.jTblCargos.getSelectedRow() != -1) {
             this.jTFIdCargo.setText(String.valueOf(this.jTblCargos.getValueAt(this.jTblCargos.getSelectedRow(), 0)));
@@ -157,7 +157,7 @@ public class jFraCargo extends javax.swing.JFrame {
         }
     }
 
-    //Metodo para llamar el metodo de actualizar registro de la tabla.
+    // Método para llamar al método de actualizar registro de la tabla.
     private void editar() throws SQLException {
         actualizarCargo();
         poblarTablaCargos();
@@ -166,7 +166,7 @@ public class jFraCargo extends javax.swing.JFrame {
         encontrarCorrelativo();
     }
 
-    //Metodo para eliminar.
+    // Método para eliminar.
     private void eliminarCargo() {
         try {
             CDCargo cdc = new CDCargo();
@@ -182,7 +182,8 @@ public class jFraCargo extends javax.swing.JFrame {
             this.jTFCargo.requestFocus();
         }
     }
-    //Metodo para invocar el metodo eliminar
+    
+    // Método para invocar el método eliminar.
     private void eliminar() throws SQLException {
         int resp = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea eliminar el registro?", "Sistema Paquetería",
                 JOptionPane.YES_NO_OPTION);
@@ -198,7 +199,7 @@ public class jFraCargo extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error" + ex);
             }
-        }else {
+        } else {
             limpiarTextField();
         }
 
@@ -236,14 +237,14 @@ public class jFraCargo extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("GESTIÓN DE CARGOS");
+        jLabel1.setText("GESTIÓN DE CARGO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(207, Short.MAX_VALUE)
+                .addContainerGap(226, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(199, 199, 199))
         );

@@ -32,7 +32,7 @@ public class jFraFormaPago extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
-    //Método para limpiar los datos de la tabla.
+    // Método para limpiar los datos de la tabla.
     private void limpiarTabla() {
         DefaultTableModel dtm = (DefaultTableModel) this.jTblFormaPago.getModel();
         
@@ -41,25 +41,25 @@ public class jFraFormaPago extends javax.swing.JFrame {
         }
     }
     
-    //Metodo para poblar las tablas
+    // Método para poblar las tabla.
     private void poblarTablaFormaPago() throws SQLException {
-        
+
         limpiarTabla();
-        
+
         CDFormaPago cdc = new CDFormaPago();
         List<CLFormaPago> miLista = cdc.obtenerListaFormaPago();
         DefaultTableModel temp = (DefaultTableModel) this.jTblFormaPago.getModel();
-        
+
         miLista.stream().map((CLFormaPago cl) -> {
             Object[] fila = new Object[2];
             fila[0] = cl.getIdFormaPago();
             fila[1] = cl.getFormaPago();
             return fila;
         }).forEachOrdered(temp::addRow);
-        
+
     }
     
-    //Metodo para encontrar correlativo del id forma pago
+    // Método para encontrar correlativo del idFormaPago.
     private void encontrarCorrelativo() throws SQLException {
         CDFormaPago cdc = new CDFormaPago();
         CLFormaPago cl = new CLFormaPago();
@@ -68,53 +68,53 @@ public class jFraFormaPago extends javax.swing.JFrame {
         this.jTFId.setText(String.valueOf(cl.getIdFormaPago()));
     }
     
-    //Metodo para habilitar y desabilitar botones
+    // Método para habilitar y deshabilitar botones.
     private void habilitarBotones(boolean guardar, boolean editar, boolean eliminar, boolean limpiar) {
-        
+
         this.jBtnGuardar.setEnabled(guardar);
         this.jBtnEditar.setEnabled(editar);
         this.jBtnEliminar.setEnabled(eliminar);
         this.jBtnLimpiar.setEnabled(limpiar);
     }
     
-    //Metodo para limpiar textfield
+    // Método para limpiar textfield.
     private void limpiarTextField() {
         this.jTFId.setText("");
         this.jTFFormaPago.setText("");
         this.jTFFormaPago.requestFocus();
     }
     
-    //metodo para validar la textfield
+    // Método para validar la textfield.
     private boolean validarTextField() {
         boolean estado;
         estado = !this.jTFFormaPago.getText().equals("");
         return estado;
     }
     
-    //Metodo para insertar
+    // Método para insertar.
     private void insertarFormaPago() {
         if (!validarTextField()) {
             JOptionPane.showMessageDialog(null, "Tiene que ingresar la forma de pago", "Sistema Paquetería",
-                                          JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.INFORMATION_MESSAGE);
             this.jTFFormaPago.requestFocus();
-        }else {
-            try{
+        } else {
+            try {
                 CDFormaPago cdc = new CDFormaPago();
                 CLFormaPago cl = new CLFormaPago();
                 cl.setFormaPago(this.jTFFormaPago.getText().trim());
                 cdc.insertarFormaPago(cl);
-                
+
                 JOptionPane.showMessageDialog(null, "Forma de Pago almacenada correctamente", "Sistema Paquetería",
-                                          JOptionPane.INFORMATION_MESSAGE);
-                
-            }catch (SQLException ex) {
+                        JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al guardar la forma de pago:" + ex);
                 this.jTFFormaPago.requestFocus();
             }
         }
     }
     
-    //Metodo para llamar el metodo insertar
+    // Método para llamar el metodo insertar.
     private void guardar() throws SQLException {
         insertarFormaPago();
         poblarTablaFormaPago();
@@ -123,31 +123,31 @@ public class jFraFormaPago extends javax.swing.JFrame {
         encontrarCorrelativo();
     }
     
-    //Metodo para actualizar un registro de la tabla forma pago.
+    // Método para actualizar un registro de la tabla forma pago.
     private void actualizarFormaPago() {
         if (!validarTextField()) {
             JOptionPane.showMessageDialog(null, "Tiene que ingresar la forma de pago", "Sistema Paquetería",
-                                          JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.INFORMATION_MESSAGE);
             this.jTFFormaPago.requestFocus();
-        }else {
-            try{
+        } else {
+            try {
                 CDFormaPago cdc = new CDFormaPago();
                 CLFormaPago cl = new CLFormaPago();
                 cl.setIdFormaPago(Integer.parseInt(this.jTFId.getText().trim()));
                 cl.setFormaPago(this.jTFFormaPago.getText().trim());
                 cdc.actualizarformaPago(cl);
-                
+
                 JOptionPane.showMessageDialog(null, "Registro actualizado correctamente", "Sistema Paquetería",
-                                          JOptionPane.INFORMATION_MESSAGE);
-                
-            }catch (SQLException ex) {
+                        JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al actualizar el registro:" + ex);
                 this.jTFFormaPago.requestFocus();
             }
         }
     }
-    
-    //Metodo para selecionar los datos de la fila y asi poder modificarlos
+
+    // Método para selecionar los datos de la fila y así poder modificarlos.
     private void filaSeleccionada() {
         if (this.jTblFormaPago.getSelectedRow() != -1) {
             this.jTFId.setText(String.valueOf(this.jTblFormaPago.getValueAt(this.jTblFormaPago.getSelectedRow(), 0)));
@@ -155,7 +155,7 @@ public class jFraFormaPago extends javax.swing.JFrame {
         }
     }
     
-    //Metodo para llamar el metodo actualizar registro de la tabla
+    // Método para llamar el método actualizar registro de la tabla.
     private void editar() throws SQLException {
         actualizarFormaPago();
         poblarTablaFormaPago();
@@ -163,7 +163,7 @@ public class jFraFormaPago extends javax.swing.JFrame {
         limpiarTextField();
     }
     
-    //Metodo para eliminar
+    // Método para eliminar.
     private void eliminarFormaPago() {
         try {
             CDFormaPago cdc = new CDFormaPago();
@@ -179,9 +179,11 @@ public class jFraFormaPago extends javax.swing.JFrame {
             this.jTFFormaPago.requestFocus();
         }
     }
+    
+    // Método para eliminar.
     private void eliminar() throws SQLException {
         int resp = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea eliminar?", "Sistema Paquetería",
-                                                 JOptionPane.YES_NO_OPTION);
+                JOptionPane.YES_NO_OPTION);
         if (resp == JOptionPane.YES_OPTION) {
             try {
                 eliminarFormaPago();
@@ -191,7 +193,7 @@ public class jFraFormaPago extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al eliminar el registro;" + ex);
             }
-        }else {
+        } else {
             limpiarTextField();
         }
     }
@@ -234,17 +236,17 @@ public class jFraFormaPago extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(149, 149, 149)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(159, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addGap(139, 139, 139))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 80));

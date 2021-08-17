@@ -33,7 +33,7 @@ public class jFraCiudad extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    //Metodo para Limpiar tablas 
+    // Método para limpiar tablas.
     private void limpiarTabla() {
         DefaultTableModel dtm = (DefaultTableModel) this.jTblCiudades.getModel();
         
@@ -42,25 +42,25 @@ public class jFraCiudad extends javax.swing.JFrame {
         }
     }
     
-    //Metodo para poblar las tablas
+    // Método para poblar las tabla.
     private void poblarTablaCiudad() throws SQLException {
-        
+
         limpiarTabla();
-        
+
         CDCiudad cdc = new CDCiudad();
         List<CLCiudad> miLista = cdc.obtenerListaCiudades();
         DefaultTableModel temp = (DefaultTableModel) this.jTblCiudades.getModel();
-        
+
         miLista.stream().map((CLCiudad cl) -> {
             Object[] fila = new Object[2];
             fila[0] = cl.getIdCiudad();
             fila[1] = cl.getNombreCiudad();
             return fila;
         }).forEachOrdered(temp::addRow);
-        
+
     }
     
-    //Metodo para encontrar correlativo del id ciudad
+    // Método para encontrar correlativo del idCiudad.
     private void encontrarCorrelativo() throws SQLException {
         CDCiudad cdc = new CDCiudad();
         CLCiudad cl = new CLCiudad();
@@ -69,7 +69,7 @@ public class jFraCiudad extends javax.swing.JFrame {
         this.jTFIdCiudad.setText(String.valueOf(cl.getIdCiudad()));
     }
     
-    //Metodo para habilitar y desabilitar botones
+    // Método para habilitar y deshabilitar botones.
     private void habilitarBotones(boolean guardar, boolean editar, boolean eliminar, boolean limpiar) {
         
         this.jBtnGuardar.setEnabled(guardar);
@@ -78,21 +78,21 @@ public class jFraCiudad extends javax.swing.JFrame {
         this.jBtnLimpiar.setEnabled(limpiar);
     }
     
-    //Metodo para limpiar textfield
+    // Método para limpiar textfield.
     private void limpiarTextField() {
         this.jTFIdCiudad.setText("");
         this.jTFNombreCiudad.setText("");
         this.jTFNombreCiudad.requestFocus();
     }
     
-    //metodo para validar la textfield
+    // Método para validar la textfield.
     private boolean validarTextField() {
         boolean estado;
         estado = !this.jTFNombreCiudad.getText().equals("");
         return estado;
     }
     
-    //Metodo para insertar
+    // Método para insertar.
     private void insertarCiudad() {
         if (!validarTextField()) {
             JOptionPane.showMessageDialog(null, "Tiene que ingresar el nombre de la ciudad", "Sistema Paquetería",
@@ -115,7 +115,7 @@ public class jFraCiudad extends javax.swing.JFrame {
         }
     }
     
-    //Metodo para llamar el metodo insertar
+    // Método para llamar el metodo insertar.
     private void guardar() throws SQLException {
         insertarCiudad();
         poblarTablaCiudad();
@@ -124,31 +124,31 @@ public class jFraCiudad extends javax.swing.JFrame {
         encontrarCorrelativo();
     }
     
-    //Metodo para actualizar un registro de la tabla ciudad
+    // Método para actualizar un registro de la tabla ciudad.
     private void actualizarCiudad() {
         if (!validarTextField()) {
             JOptionPane.showMessageDialog(null, "Tiene que ingresar el nombre de la ciudad", "Sistema Paquetería",
-                                          JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.INFORMATION_MESSAGE);
             this.jTFNombreCiudad.requestFocus();
-        }else {
-            try{
+        } else {
+            try {
                 CDCiudad cdc = new CDCiudad();
                 CLCiudad cl = new CLCiudad();
                 cl.setIdCiudad(Integer.parseInt(this.jTFIdCiudad.getText().trim()));
                 cl.setNombreCiudad(this.jTFNombreCiudad.getText().trim());
                 cdc.actualizarCiudad(cl);
-                
+
                 JOptionPane.showMessageDialog(null, "Registro actualizado correctamente", "Sistema Paquetería",
-                                          JOptionPane.INFORMATION_MESSAGE);
-                
-            }catch (SQLException ex) {
+                        JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al actualizar el registro:" + ex);
                 this.jTFNombreCiudad.requestFocus();
             }
         }
     }
     
-    //Metodo para selecionar los datos de la fila y asi poder modificarlos
+    // Método para selecionar los datos de la fila y así poder modificarlos.
     private void filaSeleccionada() {
         if (this.jTblCiudades.getSelectedRow() != -1) {
             this.jTFIdCiudad.setText(String.valueOf(this.jTblCiudades.getValueAt(this.jTblCiudades.getSelectedRow(), 0)));
@@ -156,7 +156,7 @@ public class jFraCiudad extends javax.swing.JFrame {
         }
     }
     
-    //Metodo para llamar el metodo actualizar registro de la tabla
+    // Método para llamar al método actualizar registro de la tabla.
     private void editar() throws SQLException {
         actualizarCiudad();
         poblarTablaCiudad();
@@ -164,7 +164,7 @@ public class jFraCiudad extends javax.swing.JFrame {
         limpiarTextField();
     }
     
-    //Metodo para eliminar
+    // Método para eliminar.
     private void eliminarCiudad() {
         try {
             CDCiudad cdc = new CDCiudad();
@@ -180,9 +180,11 @@ public class jFraCiudad extends javax.swing.JFrame {
             this.jTFNombreCiudad.requestFocus();
         }
     }
+
+     // Método para eliminar.
     private void eliminar() throws SQLException {
         int resp = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea eliminar?", "Sistema Paquetería",
-                                                 JOptionPane.YES_NO_OPTION);
+                JOptionPane.YES_NO_OPTION);
         if (resp == JOptionPane.YES_OPTION) {
             try {
                 eliminarCiudad();
@@ -192,11 +194,11 @@ public class jFraCiudad extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al eliminar el registro;" + ex);
             }
-        }else {
+        } else {
             limpiarTextField();
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -230,23 +232,23 @@ public class jFraCiudad extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("GESTIÓN DE CIUDADES");
+        jLabel3.setText("GESTIÓN DE CIUDAD");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(187, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
+                .addContainerGap(220, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(189, 189, 189))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 70));

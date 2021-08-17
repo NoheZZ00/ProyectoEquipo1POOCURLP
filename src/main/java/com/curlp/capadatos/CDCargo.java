@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class CDCargo {
    
-    //Declarar las variables de conexion y consulta
+    // Declarar las variables de conexion y consulta.
     private final Connection cn;
     PreparedStatement ps;
     ResultSet rs;
@@ -32,7 +32,7 @@ public class CDCargo {
         
     }
     
-    // M[etodo para insertar un cargo en la tabla
+    // Método para insertar un cargo en la tabla.
     public void insertarCargo(CLCargo cl)throws SQLException{
         
         String sql = "{CALL insertarCargo(?)}";
@@ -47,7 +47,7 @@ public class CDCargo {
         }
     }
     
-    //Metodo para actualizar el cargo en la tabla
+    // Método para actualizar el cargo en la tabla.
     
     public void actualizarCargo(CLCargo cl)throws SQLException{   
         String sql = "{CALL actualizarCargo(?,?)}";
@@ -63,23 +63,22 @@ public class CDCargo {
         }
     }
     
-    //Metodo para eliminar el cargo en la tabla
-        
-    public void eliminarCargo(CLCargo cl)throws SQLException{   
+    // Método para eliminar el cargo en la tabla.
+    public void eliminarCargo(CLCargo cl) throws SQLException {
         String sql = "{CALL eliminarCargo(?)}";
-        
-        try{
+
+        try {
             ps = cn.prepareCall(sql);
             ps.setInt(1, cl.getIdCargo());
             ps.execute();
-            
-        }catch (SQLException e) {
+
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
-        
+
     }
     
-    // Metodo para obtener el id autoincrementado del cargo.
+    // Método para obtener el id autoincrementado del cargo.
     public int autoIncrementarCargoID() throws SQLException {
         
         int idCargo = 0;
@@ -104,7 +103,7 @@ public class CDCargo {
         return idCargo;
     }
     
-    // Metodo para poblar de datos la tabla
+    // Método para poblar de datos la tabla.
     public List<CLCargo> obtenerListaCargos() throws SQLException {
         
         String sql = "{CALL mostrarCargos()}";
@@ -130,8 +129,7 @@ public class CDCargo {
         return miLista;
     }
     
-    //Metodo que nos va a permitir llenar el combo de cargo.
-    
+    // Método que nos va a permitir llenar el combo de cargo.
     public List<String> cargarComboCargos() throws SQLException {
 
         String sql = "{CALL mostrarCargos()}";

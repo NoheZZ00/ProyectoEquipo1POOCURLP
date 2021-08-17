@@ -65,7 +65,7 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         DefaultComboBoxModel modeloSexo = new DefaultComboBoxModel(sexo);
         this.jCboSexo.setModel(modeloSexo);
     }
-    //Metodo para problar el combobox Ciudad
+    // Método para poblar el combobox Ciudad.
     private void poblarComboCiudad() throws SQLException{
         CDCiudad cdc = new CDCiudad();
         
@@ -76,7 +76,7 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         this.jCboCiudad.setModel(modeloCiudad);
     }
     
-    //Metodo para poblar datos en la tabla
+    // Método para poblar datos en la tabla.
     private void poblarTablaClientes() throws SQLException{
         limpiarTabla();
         
@@ -98,6 +98,7 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         
     
     }
+    // Método para poblar datos en la tabla por DNI.
     private void poblarTablaClientesPorDNI(String dniCliente) throws SQLException{
         limpiarTabla();
         
@@ -119,7 +120,7 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         
     
     }
-    //Metodo para seleccionar la fila en la jTable
+    // Método para seleccionar la fila en la jTable.
     private void filaSeleccionada() throws ParseException{
     
         if (this.jTblCliente.getSelectedRow() !=-1){
@@ -132,14 +133,14 @@ public class jFraDatosClientes extends javax.swing.JFrame {
             this.jCboCiudad.setSelectedItem(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(),6)));
         }    
     }
-    //Metodo para habilitar y deshabilitar botones.
+    // Método para habilitar y deshabilitar botones.
     private void habilitarBotones(boolean salvar,boolean editar, boolean eliminar, boolean limpiar){
         this.jBtnGuardar.setEnabled(salvar);
         this.jBtnEditar.setEnabled(editar);
         this.jBtnEliminar.setEnabled(eliminar);
         this.jBtnNuevoCliente.setEnabled(limpiar);
     }
-    //metodo para validar textfield
+    // Método para validar textfield.
     private boolean validarTextField(){
         boolean estado;
         
@@ -149,7 +150,7 @@ public class jFraDatosClientes extends javax.swing.JFrame {
                 this.jCboCiudad.getSelectedIndex()==-1);
         return estado;
     }
-    //Metodo para insertar un cliente en la base de datos.
+    // Método para insertar un cliente en la base de datos.
     private void insertarCliente(){
         if(this.validarTextField()){
             try{
@@ -176,14 +177,14 @@ public class jFraDatosClientes extends javax.swing.JFrame {
             this.jTFTDniCliente.requestFocus();        
         }  
     }
-     //Metodo para llamar el metodo de insertar cliente
+     // Método para llamar el metodo de insertar cliente
     private void guardar() throws SQLException{
         this.insertarCliente();
         this.poblarTablaClientes();
         this.habilitarBotones(true,false,false,true);
         this.limpiarTextField();
     }
-    //Metodo para actualizar un cliente en la base de datos.
+    // Método para actualizar un cliente en la base de datos.
     private void actualizarCliente(){
         if(this.validarTextField()){
             try{
@@ -222,11 +223,16 @@ public class jFraDatosClientes extends javax.swing.JFrame {
             CDCliente cdc =new CDCliente();
             CLCliente clc = new CLCliente();
             
-            clc.setDniCliente(this.jTFTDniCliente.getText().trim());
+            String DNI = null;
+            if (this.jTblCliente.getSelectedRow() != -1) {
+                    DNI = String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(), 0));
+                }
+            
+            clc.setDniCliente(DNI);
             
             cdc.eliminarCliente(clc);
             
-            JOptionPane.showMessageDialog(null,"Registro eliminado con exito","Control de paquetería",
+            JOptionPane.showMessageDialog(null,"Registro eliminado con éxito","Control de paquetería",
                     JOptionPane.INFORMATION_MESSAGE);
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al eliminar cliente"+ex);
@@ -234,10 +240,13 @@ public class jFraDatosClientes extends javax.swing.JFrame {
     }
     
     private void eliminar() throws SQLException{
-        int resp = JOptionPane.showConfirmDialog(null,"Estas seguro que deseas eliminar el registro?","Control paquetería",
+        int resp = JOptionPane.showConfirmDialog(null,"¿Estás seguro que deseas eliminar el registro?","Control paquetería",
                                                  JOptionPane.YES_NO_OPTION); 
-    if(resp==JOptionPane.YES_OPTION){
-        try{
+        if (resp == JOptionPane.YES_OPTION) {
+
+            String DNI;
+            try {
+                
             eliminarCliente();
             this.poblarTablaClientes();
             this.limpiarTextField();
@@ -262,6 +271,9 @@ public class jFraDatosClientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jBGSexo = new javax.swing.ButtonGroup();
+        jPMOpcion = new javax.swing.JPopupMenu();
+        jMISeleccionar = new javax.swing.JMenuItem();
+        jMIEliminar = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -293,6 +305,22 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         jTFBuscarCliente = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
 
+        jMISeleccionar.setText("Seleccionar");
+        jMISeleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMISeleccionarActionPerformed(evt);
+            }
+        });
+        jPMOpcion.add(jMISeleccionar);
+
+        jMIEliminar.setText("Eliminar");
+        jMIEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIEliminarActionPerformed(evt);
+            }
+        });
+        jPMOpcion.add(jMIEliminar);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -301,16 +329,16 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("GESTIÓN DE CLIENTES");
+        jLabel1.setText("GESTIÓN DE CLIENTE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(258, 258, 258)
+                .addGap(278, 278, 278)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +371,7 @@ public class jFraDatosClientes extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Dirreccion");
+        jLabel5.setText("Dirección");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 154, 28));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -402,11 +430,6 @@ public class jFraDatosClientes extends javax.swing.JFrame {
 
         jBtnEliminar.setBackground(new java.awt.Color(118, 213, 213));
         jBtnEliminar.setText("Eliminar");
-        jBtnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnEliminarActionPerformed(evt);
-            }
-        });
 
         jBtnEditar.setBackground(new java.awt.Color(118, 213, 213));
         jBtnEditar.setText("Editar");
@@ -459,11 +482,7 @@ public class jFraDatosClientes extends javax.swing.JFrame {
                 "DNI", "Nombre", "Apellidos", "Dirreccion", "Celular", "Sexo", "Ciudad"
             }
         ));
-        jTblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTblClienteMouseClicked(evt);
-            }
-        });
+        jTblCliente.setComponentPopupMenu(jPMOpcion);
         jScrollPane1.setViewportView(jTblCliente);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 910, 330));
@@ -542,16 +561,6 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTFBuscarClienteKeyReleased
 
-    private void jTblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblClienteMouseClicked
-        // TODO add your handling code here:
-        try{
-            this.filaSeleccionada();
-            habilitarBotones(false,true,true,true);
-        }catch(ParseException ex){
-         JOptionPane.showMessageDialog(null,"Error: " +ex);
-        }
-    }//GEN-LAST:event_jTblClienteMouseClicked
-
     private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
         // TODO add your handling code here:
         try{
@@ -561,20 +570,27 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBtnEditarActionPerformed
 
-    private void jBtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEliminarActionPerformed
-        // TODO add your handling code here:
-        try{
-            this.eliminar();
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error" +ex);
-            
-        }
-    }//GEN-LAST:event_jBtnEliminarActionPerformed
-
     private void jBtnNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNuevoClienteActionPerformed
         // TODO add your handling code here:
         this.limpiarTextField();
     }//GEN-LAST:event_jBtnNuevoClienteActionPerformed
+
+    private void jMIEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIEliminarActionPerformed
+        try {
+            eliminar();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error" + ex);
+
+        }
+    }//GEN-LAST:event_jMIEliminarActionPerformed
+
+    private void jMISeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISeleccionarActionPerformed
+        try {
+            filaSeleccionada();
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Error" + ex);
+        }
+    }//GEN-LAST:event_jMISeleccionarActionPerformed
    
     /**
      * @param args the command line arguments
@@ -633,6 +649,9 @@ public class jFraDatosClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMIEliminar;
+    private javax.swing.JMenuItem jMISeleccionar;
+    private javax.swing.JPopupMenu jPMOpcion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

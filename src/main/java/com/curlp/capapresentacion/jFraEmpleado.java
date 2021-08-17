@@ -29,7 +29,7 @@ public class jFraEmpleado extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
-    //Método para limpiar la tabla
+    // Método para limpiar la tabla.
     private void limpiarTabla() {
         DefaultTableModel dtm = (DefaultTableModel) this.jTblListaEmpleados.getModel();
         
@@ -38,7 +38,7 @@ public class jFraEmpleado extends javax.swing.JFrame {
         }
     }
     
-    //Método para limpiar las texfield
+    // Método para limpiar las texfield.
     private void limpiarControlesRegistro() {
         this.jTFDNIEmp.setText("");
         this.jTFNombreEmp.setText("");
@@ -50,7 +50,7 @@ public class jFraEmpleado extends javax.swing.JFrame {
         this.jTFDNIEmp.requestFocus();
     }
     
-    //Método para poblar de datos el combo cargos
+    // Método para poblar de datos el combo cargos.
     private void poblarComboCargos() throws SQLException {
         CDCargo cdc = new CDCargo();
         
@@ -62,7 +62,7 @@ public class jFraEmpleado extends javax.swing.JFrame {
         this.jCBCargo.setModel(modeloCargos);   
     }
     
-    //Método para poblar de datos el combo ciudades
+    // Método para poblar de datos el combo ciudades.
     private void poblarComboCiudades() throws SQLException {
         CDCiudad cdc = new CDCiudad();
         
@@ -73,17 +73,17 @@ public class jFraEmpleado extends javax.swing.JFrame {
         DefaultComboBoxModel modeloCiudades = new DefaultComboBoxModel(ciudades);
         this.jCBCiudad.setModel(modeloCiudades);   
     }
-    
-    //Método para poblar de datos la tabla empleados
+   
+    // Método para poblar de datos la tabla empleados.
     private void poblarTablaEmpleados() throws SQLException {
         limpiarTabla();
-        
+
         CDEmpleado cde = new CDEmpleado();
-        
+
         List<CLEmpleado> miLista = cde.obtenerListaEmpleados();
-        
+
         DefaultTableModel dtm = (DefaultTableModel) this.jTblListaEmpleados.getModel();
-        
+
         miLista.stream().map((cle) -> {
             Object[] fila = new Object[7];
             fila[0] = cle.getDNIEmp();
@@ -93,12 +93,12 @@ public class jFraEmpleado extends javax.swing.JFrame {
             fila[4] = cle.getCelular();
             fila[5] = cle.getCargo();
             fila[6] = cle.getCiudad();
-                    
+
             return fila;
         }).forEachOrdered(dtm::addRow);
     }
     
-    //Método para poblar la tabla empleados por nombre
+    // Método para poblar la tabla empleados por nombre.
     private void poblarTablaEmpleadosPorNombre(String nombreEmpleado) throws SQLException {
         limpiarTabla();
         
@@ -123,7 +123,7 @@ public class jFraEmpleado extends javax.swing.JFrame {
         }).forEachOrdered(dtm::addRow);
     }
     
-    //Método para seleccionar una fila  de la tabla y pasarla a los textfield
+    // Método para seleccionar una fila  de la tabla y pasarla a los textfield.
     private void filaSeleccionada() throws ParseException {
         if(this.jTblListaEmpleados.getSelectedRow() != -1) {
             this.jTFDNIEmp.setText(String.valueOf(this.jTblListaEmpleados.getValueAt(this.jTblListaEmpleados.getSelectedRow(),0)));
@@ -136,7 +136,7 @@ public class jFraEmpleado extends javax.swing.JFrame {
         }
     }
     
-    //Método para habilitar y deshabilitar botones
+    // Método para habilitar y deshabilitar botones.
     private void habilitarBotones(boolean guardar, boolean editar, boolean eliminar, boolean limpiar) {
         this.jBtnGuardar.setEnabled(guardar);
         this.jBtnEditar.setEnabled(editar);
@@ -144,7 +144,7 @@ public class jFraEmpleado extends javax.swing.JFrame {
         this.jBtnCancelar.setEnabled(limpiar);
     }
     
-    //Método para validar textField
+    // Método para validar textField.
     private boolean validarTextField() {
         boolean estado;
         
@@ -156,14 +156,14 @@ public class jFraEmpleado extends javax.swing.JFrame {
         return estado;
     }
     
-    //Método para insertar un empleado
+    // Método para insertar un empleado.
     private void insertarEmpleado() throws SQLException {
-        if(validarTextField()) {
+        if (validarTextField()) {
             try {
                 CDEmpleado cde = new CDEmpleado();
 
                 CLEmpleado cle = new CLEmpleado();
-            
+
                 cle.setDNIEmp(this.jTFDNIEmp.getText().trim());
                 cle.setNombreEmp(this.jTFNombreEmp.getText().trim());
                 cle.setApellidosEmp(this.jTFApellidosEmp.getText().trim());
@@ -175,20 +175,20 @@ public class jFraEmpleado extends javax.swing.JFrame {
                 cde.insertarEmpleado(cle);
 
                 JOptionPane.showMessageDialog(null, "Registro almacenado satisfactoriamente...", "Control empleados",
-                    JOptionPane.INFORMATION_MESSAGE);
-            
-            }catch(SQLException ex) {
-                JOptionPane.showMessageDialog(null,"Error al almacenar el empleado" + ex);
+                        JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al almacenar el empleado" + ex);
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Verifica que todos los datos requeridos tengan algun valor", "Control empleados",
                     JOptionPane.INFORMATION_MESSAGE);
             this.jTFDNIEmp.requestFocus();
-        } 
+        }
     }
     
-    //Método para que ejecute el llamado a la fuhncion insertar empleado
+    // Método para que ejecute el llamado a la función insertar empleado.
     private void guardar() throws SQLException {
         limpiarTabla();
         insertarEmpleado();
@@ -197,9 +197,9 @@ public class jFraEmpleado extends javax.swing.JFrame {
         limpiarControlesRegistro();
     }
     
-    //Método para actualiar el registro de un empleado
+    // Método para actualiar el registro de un empleado.
     private void actualizarEmpleado() throws SQLException {
-        if(validarTextField()) {
+        if (validarTextField()) {
             try {
                 CDEmpleado cde = new CDEmpleado();
                 CLEmpleado cle = new CLEmpleado();
@@ -213,21 +213,21 @@ public class jFraEmpleado extends javax.swing.JFrame {
                 cle.setCiudad(this.jCBCiudad.getSelectedItem().toString());
 
                 cde.actualizarEmpleado(cle);
-                
+
                 JOptionPane.showMessageDialog(null, "Registro actualizado satisfactoriamente...", "Control empleados",
-                    JOptionPane.INFORMATION_MESSAGE);
-            
-            } catch(SQLException ex) {
-                JOptionPane.showMessageDialog(null,"Error al actualizar empleado " + ex.getMessage());
+                        JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al actualizar empleado " + ex.getMessage());
             }
         } else {
             JOptionPane.showMessageDialog(null, "Verifica que todos los datos requeridos tengan algun valor", "Control empleados",
                     JOptionPane.INFORMATION_MESSAGE);
             this.jTFDNIEmp.requestFocus();
-        }  
+        }
     }
     
-    //Método para llamar al metodo de actualizar empleado
+    // Método para llamar al método de actualizar empleado.
     private void actualizar() throws SQLException {
         actualizarEmpleado();
         poblarTablaEmpleados();
@@ -235,46 +235,46 @@ public class jFraEmpleado extends javax.swing.JFrame {
         limpiarControlesRegistro();
     }
     
-    //Método para eliminar un empleado
+    // Método para eliminar un empleado.
     private void eliminarEmpleado() {
-        
+
         try {
             CDEmpleado cde = new CDEmpleado();
             CLEmpleado cle = new CLEmpleado();
-            
+
             cle.setDNIEmp(this.jTFDNIEmp.getText().trim());
-            
+
             cde.eliminarEmpleado(cle);
-            
+
             JOptionPane.showMessageDialog(null, "Registro eliminado satisfactoriamente...", "Control empleados",
                     JOptionPane.INFORMATION_MESSAGE);
-            
-        } catch(SQLException ex) {
-                JOptionPane.showMessageDialog(null,"Error al eliminar empleado" + ex.getMessage());
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar empleado" + ex.getMessage());
         }
     }
-    
-    //Método para invocar al metodo de eliminar empleado
+
+    // Método para invocar al método de eliminar empleado.
     private void eliminar() throws SQLException {
         int resp = JOptionPane.showConfirmDialog(null, "¿Estas seguro que deseas eliminar el registro?", "Control empleados",
-                    JOptionPane.YES_NO_OPTION);
-        
-        if(resp == JOptionPane.YES_OPTION) {
+                JOptionPane.YES_NO_OPTION);
+
+        if (resp == JOptionPane.YES_OPTION) {
             try {
                 eliminarEmpleado();
                 //limpiarTabla();
                 poblarTablaEmpleados();
                 limpiarControlesRegistro();
-                habilitarBotones(true,false,false,true);
-                
-            } catch(SQLException ex) {
-                JOptionPane.showMessageDialog(null,"Error al eliminar empleado" + ex.getMessage());
+                habilitarBotones(true, false, false, true);
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al eliminar empleado" + ex.getMessage());
             }
-        }else {
+        } else {
             limpiarControlesRegistro();
             this.jTFDNIEmp.requestFocus();
         }
-        
+
     }
     
     /**
@@ -325,14 +325,14 @@ public class jFraEmpleado extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("GESTIÓN DE EMPLEADOS");
+        jLabel1.setText("GESTIÓN DE EMPLEADO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(308, Short.MAX_VALUE)
+                .addContainerGap(327, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(299, 299, 299))
         );
