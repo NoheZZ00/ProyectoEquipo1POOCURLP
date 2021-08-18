@@ -10,7 +10,7 @@ package com.curlp.capalogica;
  * @author Oniel_Espinal
  */
 public class CLCliente {
-    private String dniCliente,nombre,apellidos,dirreccion,celular;
+    private String dniCliente,nombre,apellidos,direccion,celular;
     private String sexo,ciudad;
     
 
@@ -46,12 +46,12 @@ public class CLCliente {
         this.apellidos = apellidos;
     }
 
-    public String getDirreccion() {
-        return dirreccion;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDirreccion(String dirreccion) {
-        this.dirreccion = dirreccion;
+    public void setDireccion(String dirreccion) {
+        this.direccion = dirreccion;
     }
 
     public String getSexo() {

@@ -29,236 +29,237 @@ public class jFraDatosClientes extends javax.swing.JFrame {
      */
     public jFraDatosClientes() throws SQLException {
         initComponents();
-        this.poblarComboCiudad();
-        this.polarComboSexo();
-        this.poblarTablaClientes();
-        this.jTFTDniCliente.requestFocus();
-        this.setLocationRelativeTo(null);
+        poblarComboCiudad();
+        polarComboSexo();
+        poblarTablaClientes();
+        habilitarBotones(true, false, true);
+        this.jTFFDniCliente.requestFocus();
+        setLocationRelativeTo(null);
     }
     
-    private void limpiarTabla(){
+    private void limpiarTabla() {
         DefaultTableModel dtm = (DefaultTableModel) this.jTblCliente.getModel();
-        
-        while(dtm.getRowCount()>0){
-        dtm.removeRow(0);
-        }       
+
+        while (dtm.getRowCount() > 0) {
+            dtm.removeRow(0);
+        }
     }
-    
-    private void limpiarTextField(){
-        this.jTFTDniCliente.setValue(null);
+
+    private void limpiarTextField() {
+        this.jTFFDniCliente.setValue(null);
         this.jTFNombreCliente.setText("");
         this.jTFApellidosCliente.setText("");
-        this.jTFDirreccion.setText("");
-        this.jTFDirreccion.setText("");
-        this.jTFTCelular.setText(null);
+        this.jTADireccion.setText("");
+        this.jTADireccion.setText("");
+        this.jTFFCelular.setText(null);
         this.jCboSexo.setSelectedIndex(0);
         this.jCboCiudad.setSelectedIndex(0);
-        this.jTFTDniCliente.requestFocus();
-        
+        this.jTFFDniCliente.requestFocus();
+
     }
-    private void polarComboSexo() throws SQLException{
+    private void polarComboSexo() throws SQLException {
         CDSexo cds = new CDSexo();
-        
+
         String[] sexo = new String[cds.cargarSexos().size()];
         sexo = cds.cargarSexos().toArray(sexo);
-        
+
         DefaultComboBoxModel modeloSexo = new DefaultComboBoxModel(sexo);
         this.jCboSexo.setModel(modeloSexo);
     }
     // Método para poblar el combobox Ciudad.
-    private void poblarComboCiudad() throws SQLException{
+    private void poblarComboCiudad() throws SQLException {
         CDCiudad cdc = new CDCiudad();
-        
+
         String[] ciudad = new String[cdc.cargarComboCiudades().size()];
         ciudad = cdc.cargarComboCiudades().toArray(ciudad);
-        
-        DefaultComboBoxModel modeloCiudad= new DefaultComboBoxModel(ciudad);
+
+        DefaultComboBoxModel modeloCiudad = new DefaultComboBoxModel(ciudad);
         this.jCboCiudad.setModel(modeloCiudad);
     }
     
     // Método para poblar datos en la tabla.
-    private void poblarTablaClientes() throws SQLException{
+    private void poblarTablaClientes() throws SQLException {
         limpiarTabla();
-        
+
         CDCliente cdc = new CDCliente();
         List<CLCliente> miLista = cdc.obtenerListaCliente();
         DefaultTableModel dtm = (DefaultTableModel) this.jTblCliente.getModel();
         
         miLista.stream().map(clc -> {
             Object[] fila = new Object[7];
-            fila[0]=clc.getDniCliente();
-            fila[1]=clc.getNombre();
-            fila[2]=clc.getApellidos();
-            fila[3]=clc.getDirreccion();
-            fila[4]=clc.getCelular();
-            fila[5]=clc.getSexo();
-            fila[6]=clc.getCiudad();
+            fila[0] = clc.getDniCliente();
+            fila[1] = clc.getNombre();
+            fila[2] = clc.getApellidos();
+            fila[3] = clc.getDireccion();
+            fila[4] = clc.getCelular();
+            fila[5] = clc.getSexo();
+            fila[6] = clc.getCiudad();
             return fila;
         }).forEachOrdered(dtm::addRow);
+  
         
-    
     }
     // Método para poblar datos en la tabla por DNI.
-    private void poblarTablaClientesPorDNI(String dniCliente) throws SQLException{
+    private void poblarTablaClientesPorDNI(String dniCliente) throws SQLException {
         limpiarTabla();
-        
+
         CDCliente cdc = new CDCliente();
         List<CLCliente> miLista = cdc.obtenerListaClientePorDNI(dniCliente);
         DefaultTableModel dtm = (DefaultTableModel) this.jTblCliente.getModel();
-        
+
         miLista.stream().map(clc -> {
             Object[] fila = new Object[7];
-            fila[0]=clc.getDniCliente();
-            fila[1]=clc.getNombre();
-            fila[2]=clc.getApellidos();
-            fila[3]=clc.getDirreccion();
-            fila[4]=clc.getCelular();
-            fila[5]=clc.getSexo();
-            fila[6]=clc.getCiudad();
+            fila[0] = clc.getDniCliente();
+            fila[1] = clc.getNombre();
+            fila[2] = clc.getApellidos();
+            fila[3] = clc.getDireccion();
+            fila[4] = clc.getCelular();
+            fila[5] = clc.getSexo();
+            fila[6] = clc.getCiudad();
             return fila;
         }).forEachOrdered(dtm::addRow);
+
         
-    
     }
     // Método para seleccionar la fila en la jTable.
-    private void filaSeleccionada() throws ParseException{
-    
-        if (this.jTblCliente.getSelectedRow() !=-1){
-            this.jTFTDniCliente.setText(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(),0)));
-            this.jTFNombreCliente.setText(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(),1)));
-            this.jTFApellidosCliente.setText(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(),2)));
-            this.jTFDirreccion.setText(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(),3)));
-            this.jTFTCelular.setText(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(),4)));
-            this.jCboSexo.setSelectedItem(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(),5)));
-            this.jCboCiudad.setSelectedItem(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(),6)));
-        }    
+    private void filaSeleccionada() throws ParseException {
+
+        if (this.jTblCliente.getSelectedRow() != -1) {
+            this.jTFFDniCliente.setText(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(), 0)));
+            this.jTFNombreCliente.setText(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(), 1)));
+            this.jTFApellidosCliente.setText(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(), 2)));
+            this.jTADireccion.setText(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(), 3)));
+            this.jTFFCelular.setText(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(), 4)));
+            this.jCboSexo.setSelectedItem(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(), 5)));
+            this.jCboCiudad.setSelectedItem(String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(), 6)));
+        }
     }
     // Método para habilitar y deshabilitar botones.
-    private void habilitarBotones(boolean salvar,boolean editar, boolean eliminar, boolean limpiar){
+    private void habilitarBotones(boolean salvar, boolean editar, boolean limpiar) {
         this.jBtnGuardar.setEnabled(salvar);
         this.jBtnEditar.setEnabled(editar);
-        this.jBtnEliminar.setEnabled(eliminar);
-        this.jBtnNuevoCliente.setEnabled(limpiar);
+        this.jBtnCancelar.setEnabled(limpiar);
     }
+
     // Método para validar textfield.
-    private boolean validarTextField(){
+    private boolean validarTextField() {
         boolean estado;
-        
-        estado=!(this.jTFTDniCliente.getText().isEmpty() || this.jTFNombreCliente.getText().isEmpty()||
-                this.jTFApellidosCliente.getText().isEmpty()||this.jTFDirreccion.getText().isEmpty()||
-                this.jTFTCelular.getText().isEmpty()|| this.jCboCiudad.getSelectedIndex()==-1||
-                this.jCboCiudad.getSelectedIndex()==-1);
+
+        estado = !(this.jTFFDniCliente.getText().isEmpty() || this.jTFNombreCliente.getText().isEmpty()
+                || this.jTFApellidosCliente.getText().isEmpty() || this.jTADireccion.getText().isEmpty()
+                || this.jTFFCelular.getText().isEmpty() || this.jCboCiudad.getSelectedIndex() == -1
+                || this.jCboCiudad.getSelectedIndex() == -1);
         return estado;
     }
     // Método para insertar un cliente en la base de datos.
-    private void insertarCliente(){
-        if(this.validarTextField()){
-            try{
+    private void insertarCliente() {
+        if (validarTextField()) {
+            try {
                 CDCliente cdc = new CDCliente();
-                CLCliente clc= new CLCliente();
-                
-                clc.setDniCliente(this.jTFTDniCliente.getText().trim());
+                CLCliente clc = new CLCliente();
+
+                clc.setDniCliente(this.jTFFDniCliente.getText().trim());
                 clc.setNombre(this.jTFNombreCliente.getText().trim());
                 clc.setApellidos(this.jTFApellidosCliente.getText().trim());
-                clc.setDirreccion(this.jTFDirreccion.getText().trim());
-                clc.setCelular(this.jTFTCelular.getText().trim());
+                clc.setDireccion(this.jTADireccion.getText().trim());
+                clc.setCelular(this.jTFFCelular.getText().trim());
                 clc.setSexo(this.jCboSexo.getSelectedItem().toString());
                 clc.setCiudad(this.jCboCiudad.getSelectedItem().toString());
                 cdc.insertarCliente(clc);
-                JOptionPane.showMessageDialog(null, "Registro almacenado satisfactoriamente...","control paqueteria",
+                JOptionPane.showMessageDialog(null, "Registro almacenado satisfactoriamente...", "control paqueteria",
                         JOptionPane.INFORMATION_MESSAGE);
-            }catch (SQLException ex){
-                JOptionPane.showMessageDialog(null,"Error al guardar el cliente: " +ex);
-                
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al guardar el cliente: " + ex);
+
             }
-        }else{
-            JOptionPane.showMessageDialog(null,"Verifique que todos los datos requeridos tengan valor","control paquetería",
+        } else {
+            JOptionPane.showMessageDialog(null, "Verifique que todos los datos requeridos tengan valor", "control paquetería",
                     JOptionPane.INFORMATION_MESSAGE);
-            this.jTFTDniCliente.requestFocus();        
-        }  
+            this.jTFFDniCliente.requestFocus();
+        }
     }
      // Método para llamar el metodo de insertar cliente
-    private void guardar() throws SQLException{
-        this.insertarCliente();
-        this.poblarTablaClientes();
-        this.habilitarBotones(true,false,false,true);
-        this.limpiarTextField();
+    private void guardar() throws SQLException {
+        insertarCliente();
+        poblarTablaClientes();
+        habilitarBotones(true, false, true);
+        limpiarTextField();
     }
     // Método para actualizar un cliente en la base de datos.
-    private void actualizarCliente(){
-        if(this.validarTextField()){
-            try{
+    private void actualizarCliente() {
+        if (validarTextField()) {
+            try {
                 CDCliente cdc = new CDCliente();
-                CLCliente clc= new CLCliente();
-                
-                clc.setDniCliente(this.jTFTDniCliente.getText().trim());
+                CLCliente clc = new CLCliente();
+
+                clc.setDniCliente(this.jTFFDniCliente.getText().trim());
                 clc.setNombre(this.jTFNombreCliente.getText().trim());
                 clc.setApellidos(this.jTFApellidosCliente.getText().trim());
-                clc.setDirreccion(this.jTFDirreccion.getText().trim());
-                clc.setCelular(this.jTFTCelular.getText().trim());
+                clc.setDireccion(this.jTADireccion.getText().trim());
+                clc.setCelular(this.jTFFCelular.getText().trim());
                 clc.setSexo(this.jCboSexo.getSelectedItem().toString());
                 clc.setCiudad(this.jCboCiudad.getSelectedItem().toString());
                 cdc.actualizarCliente(clc);
-                JOptionPane.showMessageDialog(null, "Registro actualizado satisfactoriamente...","control paqueteria",
+                JOptionPane.showMessageDialog(null, "Registro actualizado satisfactoriamente...", "control paqueteria",
                         JOptionPane.INFORMATION_MESSAGE);
-            }catch (SQLException ex){
-                JOptionPane.showMessageDialog(null,"Error al actualizar el cliente: " +ex);
-                
-            }
-        }else{
-            JOptionPane.showMessageDialog(null,"Verifique que todos los datos requeridos tengan valor","control paquetería",
-                    JOptionPane.INFORMATION_MESSAGE);
-            this.jTFTDniCliente.requestFocus();        
-        }  
-    }
-    private void actualizar() throws SQLException{
-        this.actualizarCliente();
-        this.poblarTablaClientes();
-        this.habilitarBotones(true,false,false,true);
-        this.limpiarTextField();
-    }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al actualizar el cliente: " + ex);
 
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Verifique que todos los datos requeridos tengan valor", "control paquetería",
+                    JOptionPane.INFORMATION_MESSAGE);
+            this.jTFFDniCliente.requestFocus();
+        }
+    }
+    
+    // Método para llamar al método de actualizarCliente.
+    private void actualizar() throws SQLException {
+        actualizarCliente();
+        poblarTablaClientes();
+        habilitarBotones(true, false, true);
+        limpiarTextField();
+    }
+    
+    // Metodo para eliminacion de un cliente
     private void eliminarCliente(){
-        try{
-            CDCliente cdc =new CDCliente();
+        try {
+            CDCliente cdc = new CDCliente();
             CLCliente clc = new CLCliente();
-            
+
             String DNI = null;
             if (this.jTblCliente.getSelectedRow() != -1) {
-                    DNI = String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(), 0));
-                }
-            
+                DNI = String.valueOf(this.jTblCliente.getValueAt(this.jTblCliente.getSelectedRow(), 0));
+            }
+
             clc.setDniCliente(DNI);
-            
+
             cdc.eliminarCliente(clc);
-            
-            JOptionPane.showMessageDialog(null,"Registro eliminado con éxito","Control de paquetería",
+
+            JOptionPane.showMessageDialog(null, "Registro eliminado con éxito", "Control de paquetería",
                     JOptionPane.INFORMATION_MESSAGE);
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error al eliminar cliente"+ex);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar cliente" + ex);
         }
     }
     
     private void eliminar() throws SQLException{
-        int resp = JOptionPane.showConfirmDialog(null,"¿Estás seguro que deseas eliminar el registro?","Control paquetería",
-                                                 JOptionPane.YES_NO_OPTION); 
+        int resp = JOptionPane.showConfirmDialog(null, "¿Estás seguro que deseas eliminar el registro?", "Control paquetería",
+                JOptionPane.YES_NO_OPTION);
         if (resp == JOptionPane.YES_OPTION) {
 
             String DNI;
             try {
-                
-            eliminarCliente();
-            this.poblarTablaClientes();
-            this.limpiarTextField();
-            this.habilitarBotones(true, false, false, true);
-            
-        }catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error: "+ex);
-            
-        }
-        }else{
+                eliminarCliente();
+                poblarTablaClientes();
+                limpiarTextField();
+                habilitarBotones(true, false, true);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error: " + ex);
+            }
+        } else {
             limpiarTextField();
-            this.jTFTDniCliente.requestFocus();
+            this.jTFFDniCliente.requestFocus();
         }
     }
     /**
@@ -288,16 +289,16 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTFNombreCliente = new javax.swing.JTextField();
         jTFApellidosCliente = new javax.swing.JTextField();
-        jTFDirreccion = new javax.swing.JTextField();
         jCboCiudad = new javax.swing.JComboBox<>();
         jCboSexo = new javax.swing.JComboBox<>();
-        jTFTDniCliente = new javax.swing.JFormattedTextField();
-        jTFTCelular = new javax.swing.JFormattedTextField();
+        jTFFDniCliente = new javax.swing.JFormattedTextField();
+        jTFFCelular = new javax.swing.JFormattedTextField();
         jPanel5 = new javax.swing.JPanel();
-        jBtnNuevoCliente = new javax.swing.JButton();
+        jBtnCancelar = new javax.swing.JButton();
         jBtnGuardar = new javax.swing.JButton();
-        jBtnEliminar = new javax.swing.JButton();
         jBtnEditar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTADireccion = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTblCliente = new javax.swing.JTable();
@@ -355,68 +356,68 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Nombre del Cliente");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Nombres del Cliente");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 154, 27));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Apellidos del Cliente");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, 28));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 150, 28));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("DNI Cliente");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 90, 25));
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 150, 25));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Dirección");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 154, 28));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Celular");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 154, 29));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 154, 29));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Sexo");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 154, 27));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 154, 27));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Ciudad");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 154, 28));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 154, 28));
         jPanel2.add(jTFNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 190, -1));
         jPanel2.add(jTFApellidosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 190, -1));
-        jPanel2.add(jTFDirreccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 300, -1));
 
-        jPanel2.add(jCboCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 190, -1));
+        jPanel2.add(jCboCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 190, -1));
 
-        jPanel2.add(jCboSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 190, -1));
+        jPanel2.add(jCboSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 190, -1));
 
         try {
-            jTFTDniCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####-#####")));
+            jTFFDniCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####-#####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(jTFTDniCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 190, -1));
+        jPanel2.add(jTFFDniCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 190, -1));
 
         try {
-            jTFTCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+            jTFFCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(jTFTCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 190, -1));
+        jPanel2.add(jTFFCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 190, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jBtnNuevoCliente.setBackground(new java.awt.Color(118, 213, 213));
-        jBtnNuevoCliente.setText("Nuevo");
-        jBtnNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
+        jBtnCancelar.setBackground(new java.awt.Color(118, 213, 213));
+        jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnNuevoClienteActionPerformed(evt);
+                jBtnCancelarActionPerformed(evt);
             }
         });
 
@@ -427,9 +428,6 @@ public class jFraDatosClientes extends javax.swing.JFrame {
                 jBtnGuardarActionPerformed(evt);
             }
         });
-
-        jBtnEliminar.setBackground(new java.awt.Color(118, 213, 213));
-        jBtnEliminar.setText("Eliminar");
 
         jBtnEditar.setBackground(new java.awt.Color(118, 213, 213));
         jBtnEditar.setText("Editar");
@@ -446,9 +444,8 @@ public class jFraDatosClientes extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBtnNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
         );
@@ -456,17 +453,21 @@ public class jFraDatosClientes extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jBtnNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
                 .addComponent(jBtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(jBtnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 190, 350));
+
+        jTADireccion.setColumns(20);
+        jTADireccion.setRows(5);
+        jScrollPane2.setViewportView(jTADireccion);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 260, 80));
 
         jTabbedPane1.addTab("Registro de Clientes", jPanel2);
 
@@ -503,7 +504,6 @@ public class jFraDatosClientes extends javax.swing.JFrame {
         });
         jPanel3.add(jTFBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 280, 30));
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Buscar");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 50, -1));
 
@@ -523,7 +523,7 @@ public class jFraDatosClientes extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1020, 470));
@@ -533,47 +533,48 @@ public class jFraDatosClientes extends javax.swing.JFrame {
 
     private void jBtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnGuardarActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             guardar();
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error" +ex);
         }
     }//GEN-LAST:event_jBtnGuardarActionPerformed
 
     private void jBtnMostraTodosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMostraTodosClientesActionPerformed
         // TODO add your handling code here:
-        try{
-            this.poblarTablaClientes();
+        try {
+            poblarTablaClientes();
             this.jTFBuscarCliente.setText("");
-        } catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error: "+ ex);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex);
         }
     }//GEN-LAST:event_jBtnMostraTodosClientesActionPerformed
 
     private void jTFBuscarClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscarClienteKeyReleased
         // TODO add your handling code here:
         String busqueda;
-        busqueda= this.jTFBuscarCliente.getText();
-        try{
-            this.poblarTablaClientesPorDNI(busqueda);
-        }catch(SQLException ex){
-           JOptionPane.showMessageDialog(null,"Error" +ex);
+        busqueda = this.jTFBuscarCliente.getText();
+        try {
+            poblarTablaClientesPorDNI(busqueda);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error" + ex);
         }
     }//GEN-LAST:event_jTFBuscarClienteKeyReleased
 
     private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
         // TODO add your handling code here:
-        try{
-            this.actualizar();
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error" +ex);
+        try {
+            actualizar();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error" + ex);
         }
     }//GEN-LAST:event_jBtnEditarActionPerformed
 
-    private void jBtnNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNuevoClienteActionPerformed
+    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        this.limpiarTextField();
-    }//GEN-LAST:event_jBtnNuevoClienteActionPerformed
+        limpiarTextField();
+        habilitarBotones(true, false, true);
+    }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jMIEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIEliminarActionPerformed
         try {
@@ -587,6 +588,7 @@ public class jFraDatosClientes extends javax.swing.JFrame {
     private void jMISeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISeleccionarActionPerformed
         try {
             filaSeleccionada();
+            habilitarBotones(false, true, true);
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Error" + ex);
         }
@@ -633,11 +635,10 @@ public class jFraDatosClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup jBGSexo;
+    private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnEditar;
-    private javax.swing.JButton jBtnEliminar;
     private javax.swing.JButton jBtnGuardar;
     private javax.swing.JButton jBtnMostraTodosClientes;
-    private javax.swing.JButton jBtnNuevoCliente;
     private javax.swing.JComboBox<String> jCboCiudad;
     private javax.swing.JComboBox<String> jCboSexo;
     private javax.swing.JLabel jLabel1;
@@ -658,12 +659,13 @@ public class jFraDatosClientes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTADireccion;
     private javax.swing.JTextField jTFApellidosCliente;
     private javax.swing.JTextField jTFBuscarCliente;
-    private javax.swing.JTextField jTFDirreccion;
+    private javax.swing.JFormattedTextField jTFFCelular;
+    private javax.swing.JFormattedTextField jTFFDniCliente;
     private javax.swing.JTextField jTFNombreCliente;
-    private javax.swing.JFormattedTextField jTFTCelular;
-    private javax.swing.JFormattedTextField jTFTDniCliente;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTblCliente;
     // End of variables declaration//GEN-END:variables

@@ -35,7 +35,7 @@ public class CDCliente {
             ps.setString(1, clc.getDniCliente());
             ps.setString(2, clc.getNombre());
             ps.setString(3, clc.getApellidos());
-            ps.setString(4, clc.getDirreccion());
+            ps.setString(4, clc.getDireccion());
             ps.setString(5, clc.getCelular());
             ps.setString(6, clc.getSexo());
             ps.setString(7, clc.getCiudad());
@@ -53,7 +53,7 @@ public class CDCliente {
             ps.setString(1, clc.getDniCliente());
             ps.setString(2, clc.getNombre());
             ps.setString(3, clc.getApellidos());
-            ps.setString(4, clc.getDirreccion());
+            ps.setString(4, clc.getDireccion());
             ps.setString(5, clc.getCelular());
             ps.setString(6, clc.getSexo());
             ps.setString(7, clc.getCiudad());
@@ -94,7 +94,7 @@ public class CDCliente {
                 clc.setDniCliente(rs.getString("DNICliente"));
                 clc.setNombre(rs.getString("nombreCliente"));
                 clc.setApellidos(rs.getString("apellidosCliente"));
-                clc.setDirreccion(rs.getString("direccion"));
+                clc.setDireccion(rs.getString("direccion"));
                 clc.setCelular(rs.getString("celular"));
                 clc.setSexo(rs.getString("sexo"));
                 clc.setCiudad(rs.getString("nombreCiudad"));      
@@ -125,7 +125,7 @@ public class CDCliente {
                 clc.setDniCliente(rs.getString("DNICliente"));
                 clc.setNombre(rs.getString("nombreCliente"));
                 clc.setApellidos(rs.getString("apellidosCliente"));
-                clc.setDirreccion(rs.getString("direccion"));
+                clc.setDireccion(rs.getString("direccion"));
                 clc.setCelular(rs.getString("celular"));
                 clc.setSexo(rs.getString("sexo"));
                 clc.setCiudad(rs.getString("nombreCiudad"));      
