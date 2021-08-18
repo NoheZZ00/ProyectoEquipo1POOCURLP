@@ -31,7 +31,7 @@ public class CDCiudad {
         
     }
     
-    //Metodo para insertar una ciudad en tabla
+    // Método para insertar una ciudad en tabla
     public void insertarCiudad(CLCiudad cl) throws SQLException {
         
         String sql = "{CALL insertarCiudad(?)}";
@@ -46,7 +46,7 @@ public class CDCiudad {
         }
     }
     
-    //Metodo para actualizar una ciudad
+    // Método para actualizar una ciudad
     public void actualizarCiudad(CLCiudad cl) throws SQLException {
         
         String sql = "{CALL actualizarCiudad(?,?)}";
@@ -62,7 +62,7 @@ public class CDCiudad {
         }
     }
     
-    //Metodo para eliminar Ciudad
+    // Método para eliminar Ciudad
     public void eliminarCiudad(CLCiudad cl) throws SQLException {
         
         String sql = "{CALL eliminarCiudad(?)}";
@@ -77,7 +77,7 @@ public class CDCiudad {
         }
     }
     
-    //Metodo paara obtener el autoincrementado de la ciudad
+    // Método paara obtener el autoincrementado de la ciudad
     public int autoIncrementarCiudadId() throws SQLException {
         
         int idCiudad = 0;
@@ -101,7 +101,7 @@ public class CDCiudad {
         return idCiudad;
     }
     
-    //Metodo para poblar de datos la tabla
+    // Método para poblar de datos la tabla
     public List<CLCiudad> obtenerListaCiudades() throws SQLException {
         
         String sql = "{CALL mostrarCiudades()}";
@@ -127,7 +127,7 @@ public class CDCiudad {
         return miLista;
     } 
     
-    //Metodo que nos va permitir llenar el combo de ciudad
+    // Método que nos va permitir llenar el combo de ciudad
     public List<String> cargarComboCiudades() throws SQLException {
         
         String sql = "{CALL mostrarCiudades()}";
